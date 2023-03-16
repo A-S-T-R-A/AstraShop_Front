@@ -6,7 +6,7 @@ function App() {
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                Navigation
+                Explosion
                 <div className="content-page">
                     <AppRouter />
                 </div>
