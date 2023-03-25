@@ -50,6 +50,10 @@
     }
 }
 
+.btn {
+    padding: 12px 72px;
+}
+
 @media (min-width: 481px) {
     .content {
         padding-left: 30px;
@@ -106,12 +110,6 @@
         .description {
             display: block;
             margin-bottom: 36px;
-        }
-
-        .btn {
-            height: 48px;
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
         }
     }
 }

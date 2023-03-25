@@ -2,6 +2,7 @@
     cursor: pointer;
     font-size: var(--font-size-base);
     border-radius: 100px;
+    height: 48px;
 
     &.outline {
         border: 1px solid var(--color-dark-gray);
@@ -36,12 +37,10 @@
     }
 
     &.large {
-        padding: 16px 72px;
         line-height: 24px;
     }
 
     &.small {
-        padding: 4px 18px;
         line-height: 20px;
     }
 
