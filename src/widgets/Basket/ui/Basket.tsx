@@ -1,4 +1,5 @@
 import { OrderInfo } from "entities/OrderInfo"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
@@ -16,7 +17,19 @@ interface BasketProps {
 
 export function Basket({ isOpen, onClose }: BasketProps) {
     const height = window.innerHeight
-    const isSlideTop = window.innerWidth < 769
+    const [width, setWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+        function handleResize() {
+            setWidth(window.innerWidth)
+        }
+        window.addEventListener("resize", handleResize)
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [])
+
+    const isSlideTop = width < 769
 
     const navigate = useNavigate()
 
