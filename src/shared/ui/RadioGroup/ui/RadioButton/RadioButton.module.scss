@@ -12,6 +12,10 @@
     border: 2px solid var(--color-accent);
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 
     &::after {
         content: "";
@@ -19,7 +23,12 @@
         border-radius: 50%;
         width: 10px;
         height: 10px;
-        margin: 3px;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
     }
 
     &:checked::after {

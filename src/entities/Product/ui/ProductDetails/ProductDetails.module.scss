@@ -1,0 +1,55 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "images"
+        "button"
+        "description";
+}
+
+.header {
+    grid-area: header;
+    margin-bottom: 12px;
+
+    .title {
+        margin-bottom: 12px;
+    }
+
+    .isPresent {
+        margin-bottom: 12px;
+    }
+}
+
+.btn {
+    grid-area: button;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 80px;
+}
+
+.images {
+    grid-area: images;
+}
+
+.description {
+    grid-area: description;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 15px;
+        row-gap: 5px;
+        grid-template-areas:
+            "images header"
+            "images description"
+            "images button";
+    }
+
+    .btn {
+        margin: 0;
+        margin-bottom: 80px;
+    }
+}

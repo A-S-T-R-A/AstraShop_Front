@@ -1,0 +1,70 @@
+.wrapper {
+    background-color: rgba(0 0 0 / 0%);
+    transition: background-color 0.25s ease;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.container {
+    position: fixed;
+    background-color: var(--color-white);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0s 0.25s;
+}
+
+.right {
+    .container {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        min-width: 550px;
+        width: 100%;
+        max-width: 40vw;
+        transform: translateX(100%);
+    }
+}
+
+.top {
+    .container {
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        overflow-y: auto;
+        width: 100%;
+        transform: translateY(-100%);
+    }
+}
+
+.right.open {
+    &.wrapper {
+        background-color: var(--color-modal-overlay);
+        pointer-events: auto;
+    }
+
+    .container {
+        transform: translateX(0);
+        opacity: 1;
+        transition: transform 0.25s ease, opacity 0s;
+        pointer-events: auto;
+    }
+}
+
+.top.open {
+    &.wrapper {
+        background-color: var(--color-modal-overlay);
+        pointer-events: auto;
+    }
+
+    .container {
+        transform: translateY(0);
+        opacity: 1;
+        transition: transform 0.25s ease, opacity 0s;
+        pointer-events: auto;
+    }
+}

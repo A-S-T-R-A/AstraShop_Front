@@ -9,19 +9,17 @@ export default {
     },
 } as ComponentMeta<typeof Label>
 
-const Template: ComponentStory<typeof Label> = (args: any) => (
-    <Label {...args} />
-)
+const Template: ComponentStory<typeof Label> = (args: any) => <Label {...args} />
 
 export const DefaultOnlyValue = Template.bind({})
 DefaultOnlyValue.args = {
     value: "новый",
 }
 
-export const LabelFontSizeSmall = Template.bind({})
-LabelFontSizeSmall.args = {
+export const LabelFontSizeSmallRedGray = Template.bind({})
+LabelFontSizeSmallRedGray.args = {
     value: "новый",
-    fontSize: LabelFontSize.FONT_SMALL,
+    color: LabelColor.GRAY,
 }
 
 export const LabelFontSizeNormalRed = Template.bind({})

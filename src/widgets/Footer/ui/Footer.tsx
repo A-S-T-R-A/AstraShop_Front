@@ -3,8 +3,8 @@ import { MasterCardIcon, VisaIcon } from "shared/assets/icons/others"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { Contacts } from "entities/Contacts"
 import { Schedule } from "entities/Schedule"
-import { LinksList } from "entities/LinksList"
 import { Copyright } from "entities/Copyright/Copyright"
+import { FooterLinksList } from "./FooterLinksList/FooterLinksList"
 import styles from "./Footer.module.scss"
 import { footerLinksData } from "../model/list"
 
@@ -18,7 +18,7 @@ export function Footer() {
                     планшетных компьютеров
                 </Typography>
             </div>
-            <LinksList data={footerLinksData} className={styles.info} />
+            <FooterLinksList data={footerLinksData} className={styles.info} />
             <Schedule className={styles.schedule} />
             <Contacts className={styles.contacts} />
             <div className={styles.icons}>

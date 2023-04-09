@@ -2,15 +2,16 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import styles from "./SortProducts.module.scss"
+import { sortProductsOrderType } from "../model/types"
 
 interface SortProductsProps {
-    setSortingPattern: (val: string) => void
-    sortingPattern: string
+    sortOrderPattern: sortProductsOrderType
+    onClick: (pattern: sortProductsOrderType) => void
     className?: string
 }
 
 export function SortProducts(props: SortProductsProps) {
-    const { sortingPattern, setSortingPattern, className } = props
+    const { className, sortOrderPattern, onClick } = props
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
@@ -18,18 +19,22 @@ export function SortProducts(props: SortProductsProps) {
             <Button
                 className={styles.btn}
                 variant={
-                    sortingPattern === "asc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
+                    sortOrderPattern === sortProductsOrderType.ASC
+                        ? ButtonVariant.FILLED_RED
+                        : ButtonVariant.OUTLINE
                 }
-                onClick={() => setSortingPattern("asc")}
+                onClick={() => onClick?.(sortProductsOrderType.ASC)}
             >
                 По возрастанию
             </Button>
             <Button
                 className={styles.btn}
                 variant={
-                    sortingPattern === "desc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
+                    sortOrderPattern === sortProductsOrderType.DESC
+                        ? ButtonVariant.FILLED_RED
+                        : ButtonVariant.OUTLINE
                 }
-                onClick={() => setSortingPattern("desc")}
+                onClick={() => onClick?.(sortProductsOrderType.DESC)}
             >
                 По убыванию
             </Button>

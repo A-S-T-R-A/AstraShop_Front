@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainImg {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.imgRow {
+    display: flex;
+    width: 100%;
+    margin-bottom: 40px;
+
+    .secondaryImg {
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &.active {
+            border: 2px solid var(--color-accent);
+        }
+    }
+}

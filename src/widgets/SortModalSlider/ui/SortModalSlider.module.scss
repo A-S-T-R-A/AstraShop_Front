@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > button {
+        width: 300px;
+        height: 36px;
+    }
+
+    :last-child {
+        margin-bottom: 24px;
+    }
+}
+
+.desktopFilters {
+    display: flex;
+    flex-direction: column;
+    column-gap: 24px;
+
+    > button {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        display: none;
+    }
+}

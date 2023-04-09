@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { BasketSummary, BasketSummaryVariant } from "entities/Basket"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
 import { classNames } from "shared/lib/classNames/classNames"
 import { RadioGroup } from "shared/ui/RadioGroup"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
-import { OrderInfo, OrderInfoVariant } from "entities/OrderInfo"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import styles from "./OrderForm.module.scss"
 
@@ -92,11 +92,10 @@ export function OrderForm() {
                     label="Я согласен (согласна) на обработку моих персональных данных"
                     className={styles.consent}
                 />
-                <OrderInfo
-                    onOrderClick={() => navigate(RoutePath.delivery)}
-                    onExitClick={() => null}
+                <BasketSummary
                     className={styles.orderInfo}
-                    variant={OrderInfoVariant.VERTICAL}
+                    variant={BasketSummaryVariant.VERTICAL}
+                    onOrderClick={() => navigate("/order")}
                 />
             </form>
         </div>

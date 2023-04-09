@@ -1,7 +1,6 @@
 import { ResponsiveObject, Settings } from "react-slick"
 
 type ResponsiveSettings = ResponsiveObject[]
-
 const responsive: ResponsiveSettings = [
     {
         breakpoint: 1300,

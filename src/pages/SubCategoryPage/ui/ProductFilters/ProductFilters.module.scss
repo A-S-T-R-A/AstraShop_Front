@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .filter {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .icon {
+            fill: var(--color-dark-gray);
+            display: block;
+            margin-right: 12px;
+        }
+
+        &:hover {
+            color: var(--color-accent);
+
+            .icon {
+                fill: var(--color-accent);
+            }
+        }
+    }
+}

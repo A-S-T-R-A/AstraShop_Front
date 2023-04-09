@@ -2,10 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { ChangeEvent, InputHTMLAttributes } from "react"
 import styles from "./Input.module.scss"
 
-type HtmlInputProps = Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    "value" | "onChange"
->
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange">
 
 export enum InputType {
     TEXT = "text",
@@ -14,7 +11,7 @@ export enum InputType {
     PASSWORD = "password",
 }
 
-interface InputProps extends HtmlInputProps {
+export interface InputProps extends HtmlInputProps {
     type?: InputType
     label?: string
     isRequired?: boolean
@@ -38,20 +35,18 @@ export function Input(props: InputProps) {
         ...otherProps
     } = props
 
-    const containerClassName = classNames(
-        styles.container,
-        { [styles.incorrect]: error },
-        [className]
-    )
+    const containerClassName = classNames(styles.container, { [styles.incorrect]: error }, [
+        className,
+    ])
 
     function changeHandler(e: ChangeEvent<HTMLInputElement>) {
         onChange?.(e.target.value)
     }
 
     return (
-        <div className={containerClassName}>
+        <div className={containerClassName} data-testid="InputContainer">
             {!!label && (
-                <label htmlFor={id} className={styles.label}>
+                <label htmlFor={id} className={styles.label} data-testid="InputLabel">
                     {label}
                     {isRequired && <span className={styles.required}>*</span>}
                 </label>
@@ -63,6 +58,7 @@ export function Input(props: InputProps) {
                 type={type}
                 className={styles.input}
                 {...otherProps}
+                data-testid="Input"
             />
             {!!error && <p className={styles.error}>{error}</p>}
         </div>

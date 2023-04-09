@@ -66,6 +66,18 @@ module.exports = {
         "no-undef": "off",
         "implicit-arrow-linebreak": "warn",
         "react/jsx-no-bind": "off",
+        "react/jsx-wrap-multilines": [
+            "error",
+            {
+                declaration: "parens",
+                assignment: "parens",
+                return: "parens",
+                arrow: "parens",
+                condition: "ignore",
+                logical: "ignore",
+                prop: "ignore",
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

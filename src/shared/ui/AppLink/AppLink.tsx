@@ -16,6 +16,7 @@ export function AppLink(props: AppLinkProps) {
             to={to}
             className={classNames(styles.AppLink, {}, [className])}
             {...otherProps}
+            data-testid="AppLink"
         >
             {children}
         </Link>

@@ -1,6 +1,6 @@
-import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { Button, ButtonSize, ButtonVariant } from "./Button"
+import { DarkBgDecorator } from "shared/config/storybook/DarkBgDecorator/DarkBgDecorator"
+import { Button, ButtonVariant } from "./Button"
 
 const buttonText = "Submit"
 
@@ -14,39 +14,54 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-export const OutlineLarge = Template.bind({})
-OutlineLarge.args = {
+export const OutlineButton = Template.bind({})
+OutlineButton.args = {
     children: buttonText,
 }
 
-export const FilledRedLarge = Template.bind({})
-FilledRedLarge.args = {
+export const OutlineButtonDisabled = Template.bind({})
+OutlineButtonDisabled.args = {
+    children: buttonText,
+    disabled: true,
+}
+
+export const FilledRedButton = Template.bind({})
+FilledRedButton.args = {
     children: buttonText,
     variant: ButtonVariant.FILLED_RED,
 }
 
-export const FilledGreyLarge = Template.bind({})
-FilledGreyLarge.args = {
-    children: buttonText,
-    variant: ButtonVariant.FILLED_GREY,
-}
-
-export const OutlineSmall = Template.bind({})
-OutlineSmall.args = {
-    children: buttonText,
-    size: ButtonSize.SMALL,
-}
-
-export const FilledRedSmall = Template.bind({})
-FilledRedSmall.args = {
+export const FilledRedButtonDisabled = Template.bind({})
+FilledRedButtonDisabled.args = {
     children: buttonText,
     variant: ButtonVariant.FILLED_RED,
-    size: ButtonSize.SMALL,
+    disabled: true,
 }
 
-export const FilledGreySmall = Template.bind({})
-FilledGreySmall.args = {
+export const FilledGreyButton = Template.bind({})
+FilledGreyButton.args = {
     children: buttonText,
     variant: ButtonVariant.FILLED_GREY,
-    size: ButtonSize.SMALL,
 }
+
+export const FilledGreyButtonDisabled = Template.bind({})
+FilledGreyButtonDisabled.args = {
+    children: buttonText,
+    variant: ButtonVariant.FILLED_GREY,
+    disabled: true,
+}
+
+export const InvertedButton = Template.bind({})
+InvertedButton.args = {
+    children: buttonText,
+    variant: ButtonVariant.CLEAR_INVERTED,
+}
+InvertedButton.decorators = [DarkBgDecorator()]
+
+export const InvertedButtonDisabled = Template.bind({})
+InvertedButtonDisabled.args = {
+    children: buttonText,
+    variant: ButtonVariant.CLEAR_INVERTED,
+    disabled: true,
+}
+InvertedButtonDisabled.decorators = [DarkBgDecorator()]

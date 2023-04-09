@@ -1,0 +1,40 @@
+.breadcrumbs {
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    .breadcrumbs {
+        align-self: start;
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        a:first-child {
+            display: flex;
+        }
+
+        .crumbs {
+            .link {
+                font-size: 14px;
+
+                &.active {
+                    color: var(--color-light-gray);
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+    .home {
+        fill: var(--color-dark-gray);
+        cursor: pointer;
+
+        &:hover {
+            fill: var(--color-accent);
+        }
+    }
+
+    .icon {
+        margin: 0 10px;
+    }
+}

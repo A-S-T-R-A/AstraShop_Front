@@ -1,21 +1,31 @@
-import { Suspense, useState } from "react"
+import { Suspense, useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
-import { AppRouter } from "app/providers/router"
 import { Header } from "widgets/Header"
 import { Footer } from "widgets/Footer"
-import { Modals } from "processes/Modals"
-import { Sidebar } from "widgets/Sidebar"
+import { basketActions } from "entities/Basket"
+import { BasketModalSlider } from "widgets/BasketModalSlider"
+import { BurgerMenu } from "widgets/BurgerMenu"
+import { CatalogSidebar } from "entities/CatalogNavigation"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { useMatch } from "react-router-dom"
+import { AppRouter } from "./providers/router"
 
 function App() {
-    const [modalOpen, setModalOpen] = useState("")
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(basketActions.initBasketData())
+    })
+
+    const isSubCategoryPage = useMatch(`${RoutePath.sub_category}:id`)
 
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                <Modals modalOpen={modalOpen} setModalOpen={setModalOpen} />
-                <Sidebar />
+                {!isSubCategoryPage && <CatalogSidebar />}
                 <div className="content-page">
-                    <Header modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                    <Header BasketModal={<BasketModalSlider />} BurgerModal={<BurgerMenu />} />
                     <AppRouter />
                     <Footer />
                 </div>

@@ -1,0 +1,11 @@
+.addToBasket {
+    cursor: pointer;
+
+    &:hover {
+        fill: var(--color-accent);
+    }
+}
+
+.basketSuccess {
+    cursor: pointer;
+}

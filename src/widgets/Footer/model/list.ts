@@ -1,7 +1,17 @@
-import { LinksListItem } from "entities/LinksList"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath, AppRoutes } from "shared/config/routeConfig/routeConfig"
 
-export const footerLinksData: LinksListItem = {
+interface footerlinksItem {
+    id: string
+    text: string
+    path: string
+}
+
+interface footerLinksType {
+    title: string
+    list: footerlinksItem[]
+}
+
+export const footerLinksData: footerLinksType = {
     title: "Информация",
     list: [
         { id: "1", text: "Доставка и оплата", path: RoutePath.delivery },

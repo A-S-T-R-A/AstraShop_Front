@@ -1,0 +1,10 @@
+.delete {
+    grid-area: delete;
+    fill: var(--color-dark-gray);
+    align-self: center;
+    cursor: pointer;
+
+    &:hover {
+        fill: var(--color-accent);
+    }
+}

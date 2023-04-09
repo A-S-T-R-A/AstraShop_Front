@@ -1,3 +1,3 @@
-import { SortProducts } from "./ui/SortProducts"
+export { SortProducts } from "./ui/SortProducts"
 
-export { SortProducts }
+export { sortProductsOrderType } from "./model/types"

@@ -4,7 +4,7 @@ import styles from "./RadioButton.module.scss"
 
 export interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
-    id?: string;
+    id: string;
     className?: string;
 }
 

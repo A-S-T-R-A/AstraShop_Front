@@ -6,7 +6,11 @@ import styles from "./AboutPage.module.scss"
 export function AboutPage() {
     return (
         <div>
-            <Typography variant={TypographyVariant.H1} className={styles.title}>
+            <Typography
+                variant={TypographyVariant.H1}
+                className={styles.title}
+                data-testid="about-page"
+            >
                 О нас
             </Typography>
             <Typography color={TypographyColor.DARK_GRAY} className={styles.text}>

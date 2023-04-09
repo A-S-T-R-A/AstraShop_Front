@@ -10,6 +10,10 @@
             align-items: center;
             flex-shrink: 0;
 
+            &.active {
+                color: var(--color-accent);
+            }
+
             .menuItem {
                 fill: var(--color-dark-gray);
                 cursor: pointer;

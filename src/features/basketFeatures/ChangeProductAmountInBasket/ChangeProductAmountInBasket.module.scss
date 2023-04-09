@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100px;
+    user-select: none;
+}
+
+.icon {
+    fill: var(--color-dark-gray);
+    cursor: pointer;
+
+    &:hover {
+        fill: var(--color-accent);
+    }
+}
