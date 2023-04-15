@@ -73,14 +73,14 @@ export function Banner(props: BannerProps) {
                 {isMain ? (
                     <Button
                         variant={ButtonVariant.FILLED_RED}
-                        onClick={() => navigate(`${RoutePath.sub_category}/83`)}
+                        onClick={() => navigate(RoutePath.catalog)}
                     >
                         {t("view")}
                     </Button>
                 ) : (
                     <Button
                         variant={ButtonVariant.CLEAR_INVERTED}
-                        onClick={() => navigate(`${RoutePath.sub_category}/83`)}
+                        onClick={() => navigate(RoutePath.catalog)}
                     >
                         {t("viewProducts")}
                     </Button>
