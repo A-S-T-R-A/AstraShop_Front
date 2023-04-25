@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next"
-import { ProductAttributes } from "../model/types"
+import { ProductAttribute } from "../model/types"
 
 interface AttributesDataProps {
     description: string
-    attributes: ProductAttributes
+    attributes: ProductAttribute[]
 }
 
 interface ArticleData {
@@ -14,19 +14,20 @@ interface ArticleData {
 export function useAttributesData({ description, attributes }: AttributesDataProps) {
     const { t } = useTranslation()
 
-    function getArticlesData(attributes: ProductAttributes): ArticleData[] {
-        return Object.entries(attributes).map(([title, data]: [string, any]) => {
-            if (data.length === 1) {
-                return {
-                    title,
-                    text: data[0].name,
-                }
-            }
-            return {
+    function formatAttributes(attributes: ProductAttribute[]): ArticleData[] {
+        const formattedAttributes: ArticleData[] = []
+
+        attributes.forEach(attribute => {
+            const title = Object.keys(attribute)[0]
+            const value = attribute[title][0].name
+
+            formattedAttributes.push({
                 title,
-                text: data.map((item: any) => item.name),
-            }
+                text: [value],
+            })
         })
+
+        return formattedAttributes
     }
 
     const data = [
@@ -34,7 +35,7 @@ export function useAttributesData({ description, attributes }: AttributesDataPro
             title: t("productDescriptionTitle"),
             text: description,
         },
-        ...getArticlesData(attributes),
+        ...formatAttributes(attributes),
     ]
 
     return data

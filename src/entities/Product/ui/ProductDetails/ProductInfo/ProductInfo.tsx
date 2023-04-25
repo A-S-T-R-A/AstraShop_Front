@@ -3,7 +3,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
 import styles from "./ProductInfo.module.scss"
-import { ProductAttributes } from "../../../model/types"
+import { ProductAttribute } from "../../../model/types"
 import { useAttributesData } from "../../../lib/useAttributesData"
 
 export interface ArticleData {
@@ -57,10 +57,10 @@ function Article({ data }: ArticleProps) {
 interface ProductInfoProps {
     className?: string
     description?: string
-    attributes?: ProductAttributes
+    attributes?: ProductAttribute[]
 }
 
-export function ProductInfo({ className, description = "", attributes = {} }: ProductInfoProps) {
+export function ProductInfo({ className, description = "", attributes = [] }: ProductInfoProps) {
     const data = useAttributesData({ description, attributes })
 
     if (!description || !attributes) return null

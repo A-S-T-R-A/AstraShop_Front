@@ -1,5 +1,10 @@
-export interface ProductAttributes {
-    [key: string]: string | string[]
+export interface ProductAttributeData {
+    id: number
+    name: string
+}
+
+export interface ProductAttribute {
+    [key: string]: ProductAttributeData[]
 }
 
 interface ProductParentCategory {
@@ -15,7 +20,7 @@ export interface Product {
     images: string[]
     price: number
     description?: string
-    attributes?: ProductAttributes
+    attributes?: ProductAttribute[]
     parent_category_id?: number
     parentCategories?: ProductParentCategory[]
 }
