@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom"
 import { singleBannerList as slides } from "widgets/Banner/const/lists"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
-import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { useEffect, useState } from "react"
+import { DeviceType, getCurrentDevice } from "../../lib/getCurrentDeviceBanner"
 import styles from "./SingleBanner.module.scss"
 
 interface ISingleBannerProps {
