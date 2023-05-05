@@ -9,7 +9,7 @@ export function ProductAll() {
                 <ProductGallery />
             </LayoutIsland>
 
-            <LayoutIsland column="right" height="100px">
+            <LayoutIsland column="right" height="200px">
                 <ProductInfoIsland />
             </LayoutIsland>
 
