@@ -7,10 +7,10 @@ export const getCurrentDevice = (width: number, callback: (device: DeviceType) =
         case width <= 480:
             device = "mobile"
             break
-        case width >= 481:
+        case width <= 960:
             device = "tablet"
             break
-        case width > 760:
+        case width > 960:
             device = "desktop"
             break
         default:

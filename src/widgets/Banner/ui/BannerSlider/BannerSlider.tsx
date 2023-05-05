@@ -3,7 +3,7 @@ import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { useNavigate } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
-import { DeviceType, getCurrentDevice } from "../../lib/getCurrentDeviceBanner"
+import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
 import styles from "./BannerSlider.module.scss"
@@ -56,6 +56,8 @@ export function BannerSlider() {
     }, 500)
 
     useEffect(() => {
+        getCurrentDevice(window.innerWidth, setDevice)
+
         window.addEventListener("resize", debouncedResizeHandler)
         return () => window.removeEventListener("resize", debouncedResizeHandler)
     }, [debouncedResizeHandler])

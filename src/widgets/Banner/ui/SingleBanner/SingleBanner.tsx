@@ -3,7 +3,7 @@ import { singleBannerList as slides } from "widgets/Banner/const/lists"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { useEffect, useState } from "react"
-import { DeviceType, getCurrentDevice } from "../../lib/getCurrentDeviceBanner"
+import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import styles from "./SingleBanner.module.scss"
 import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
 
