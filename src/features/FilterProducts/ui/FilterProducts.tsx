@@ -40,21 +40,18 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                     const range = item.info as FilterItemPriceRange
                     return (
                         <PriceFilter
-                            key={item.id}
+                            key={item.name + item.id}
                             title={item.name}
                             range={range}
                             onChangeFilters={onChangeFilters}
                         />
                     )
                 }
-                return null
-            })}
-            {data.map(item => {
                 if (item.type === "attributes") {
                     const range = item.info as FilterItemAttribute[]
                     return (
                         <CheckboxGroup
-                            key={item.id}
+                            key={item.name + item.id}
                             list={range}
                             title={item.name}
                             onChangeFilters={onChangeFilters}

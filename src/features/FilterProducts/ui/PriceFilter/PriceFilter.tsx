@@ -21,7 +21,7 @@ export function PriceFilter(props: PriceFilterProps) {
     const MINIMUM_PRICE = range.from
     const MAXIMUM_PRICE = range.to
     const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
-    const GAP = Math.floor(PRICE_RANGE * 0.05) || 100
+    const GAP = 1
 
     const dispatch = useDispatch()
 
@@ -71,7 +71,7 @@ export function PriceFilter(props: PriceFilterProps) {
 
         if (side === "min") {
             if (max - +value < GAP) {
-                setPriceSort({ max, min: max - GAP })
+                setPriceSort({ max, min: max - GAP > 0 ? max - GAP : 0 })
                 if (minRef.current) minRef.current.value = (max - GAP).toString()
             } else if (+value < MINIMUM_PRICE) {
                 setPriceSort({ max, min: +value })
@@ -87,7 +87,7 @@ export function PriceFilter(props: PriceFilterProps) {
                     maxRef.current.value = (min + GAP).toString()
                 }
             } else if (+value > MAXIMUM_PRICE) {
-                setPriceSort({ min, max: +value })
+                setPriceSort({ min, max: MAXIMUM_PRICE })
                 if (maxRef.current) maxRef.current.value = MAXIMUM_PRICE.toString()
             } else {
                 setPriceSort({ min, max: +value })

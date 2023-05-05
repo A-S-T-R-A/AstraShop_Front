@@ -4,6 +4,7 @@ import styles from "./Label.module.scss"
 export enum LabelColor {
     GRAY = "gray",
     RED = "red",
+    ATTENTION = "attention",
 }
 
 export enum LabelFontSize {

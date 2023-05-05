@@ -7,6 +7,7 @@ import { DeviceType, getCurrentDevice } from "../../lib/getCurrentDeviceBanner"
 import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
 import styles from "./BannerSlider.module.scss"
+import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
 
 export function BannerSlider() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)
@@ -71,14 +72,19 @@ export function BannerSlider() {
                 className={styles.carousel}
                 style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
             >
-                {slides.map(({ images }) => (
-                    <img
-                        src={images[device]}
-                        alt=""
-                        className={styles.img}
-                        style={{ transform: `translateX(-${current * 100}%)` }}
-                    />
-                ))}
+                {slides ? (
+                    slides.map(({ images, id }) => (
+                        <img
+                            key={id}
+                            src={images[device]}
+                            alt=""
+                            className={styles.img}
+                            style={{ transform: `translateX(-${current * 100}%)` }}
+                        />
+                    ))
+                ) : (
+                    <BannerSkeleton />
+                )}
             </div>
 
             <div className={styles.pagination} onClick={e => e.stopPropagation()}>

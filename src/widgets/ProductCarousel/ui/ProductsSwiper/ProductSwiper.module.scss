@@ -8,7 +8,7 @@
     max-height: 100vh;
     min-height: 0;
     min-width: 0;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 
     .product {
         margin: 0 auto;
@@ -30,18 +30,24 @@
     :global(.swiper-pagination) {
         position: absolute !important;
         bottom: 0;
+        opacity: 1;
+        transition: opacity 0.2s ease;
     }
 
     :global(.swiper-pagination-bullet) {
-        background-color: transparent;
-        border: 1px solid var(--color-dark-gray);
+        background-color: var(--color-light-gray);
         opacity: 1;
-        height: 18px;
-        width: 18px;
+        width: 7px;
+        height: 7px;
     }
 
     :global(.swiper-pagination-bullet-active) {
-        border: 1px solid var(--color-accent);
         background-color: var(--color-accent);
+    }
+}
+
+:global(.productCarousel.noPagination) {
+    :global(.swiper-pagination) {
+        opacity: 0;
     }
 }

@@ -69,9 +69,9 @@ export function Breadcrumbs() {
                                 })}
                                 id={index === array.length - 1 ? "toolTip" : ""}
                             >
-                                {name.length > 20 ? `${name.substring(0, 20)}...` : name}
+                                {name?.length > 20 ? `${name.substring(0, 20)}...` : name}
                             </AppLink>
-                            {name.length > 20 && toolTip === index && (
+                            {name?.length > 20 && toolTip === index && (
                                 <Portal>
                                     <p
                                         style={{

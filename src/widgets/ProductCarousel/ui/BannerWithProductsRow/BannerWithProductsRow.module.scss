@@ -5,7 +5,7 @@
 }
 
 .banner {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     min-height: 300px;
 
     img {
@@ -14,6 +14,10 @@
         object-fit: cover;
         border-radius: 6px;
     }
+}
+
+.swiperContainer {
+    display: grid;
 }
 
 .title {

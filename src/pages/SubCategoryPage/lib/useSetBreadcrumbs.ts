@@ -24,6 +24,7 @@ export function useSetBreadcrumbs({
         () =>
             navigationTree.filter(item => parentCategoryId && +parentCategoryId === item.id)?.[0]
                 ?.name || "Category",
+
         [navigationTree, parentCategoryId]
     )
 

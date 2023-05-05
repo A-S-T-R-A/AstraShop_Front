@@ -4,7 +4,6 @@ import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./ChevronLeft.module.scss"
 
 type SVGPropsType = Omit<SVGProps<SVGSVGElement>, "width" | "height" | "className">
-type CSSDimensionType = `${number | string}px` | `${number | string}%` | "auto" | 0
 
 interface IIconProps extends SVGPropsType {
     size?: CSSDimensionType

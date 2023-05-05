@@ -1,16 +1,20 @@
+import { ProductCardSale } from "entities/Product"
+import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { useEffect, useState } from "react"
 import { Swiper as SwiperClass } from "swiper/types"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
+import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { SaleCountdown } from "features/SaleCountdown"
 import { IProductSwiperVariant, ProductsSwiper } from "../ProductsSwiper/ProductsSwiper"
 import styles from "./ProductsSale.module.scss"
-import { fetchTopProducts } from "../../model/services/fetchTopProducts/fetchTopProducts"
 import { getProductCarouselTopProducts } from "../../model/selectors/productCarouselSelector"
+import { fetchTopProducts } from "../../model/services/fetchTopProducts/fetchTopProducts"
 
 export function ProductsSale() {
     const [swiperRef, setSwiperRef] = useState<SwiperClass>()
+    const [isHovered, setIsHovered] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -24,30 +28,72 @@ export function ProductsSale() {
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <div className={styles.description}>
-                    <Typography variant={TypographyVariant.H2} className={styles.title}>
-                        Sale
+                    <Typography
+                        variant={TypographyVariant.H2}
+                        isBold
+                        isCentered
+                        className={styles.title}
+                    >
+                        SALE
+                    </Typography>
+                    <Typography
+                        variant={TypographyVariant.SMALL}
+                        isCentered
+                        className={styles.saleDesc}
+                    >
+                        Offer expires on:
                     </Typography>
                     <SaleCountdown />
                 </div>
-                <ProductsSwiper
-                    isLoading={false}
-                    list={topProducts || []}
-                    variant={IProductSwiperVariant.WITH_BANNER}
-                    slidesPerView={1}
-                    className={styles.swiper}
-                    onSwiper={setSwiperRef}
-                    isWithPagination={false}
-                />
-
-                <div className={styles.chevronContainerLeft} onClick={() => swiperRef?.slidePrev()}>
-                    <ChevronLeft className={styles.chevronLeft} />
-                </div>
-
                 <div
-                    className={styles.chevronContainerRight}
-                    onClick={() => swiperRef?.slideNext()}
+                    className={styles.swiperContainer}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
                 >
-                    <ChevronRight className={styles.chevronRight} />
+                    <ProductsSwiper
+                        isLoading={false}
+                        variant={IProductSwiperVariant.WITH_BANNER}
+                        slidesPerView={1}
+                        className={styles.swiper}
+                        onSwiper={setSwiperRef}
+                        isWithPagination
+                    >
+                        {topProducts?.map(item => {
+                            const { id, name, price, images, is_new: isNew } = item
+
+                            return (
+                                <ProductCardSale
+                                    key={id}
+                                    id={id}
+                                    is_new={isNew}
+                                    name={name}
+                                    price={price}
+                                    images={images}
+                                    Basket={
+                                        <ToggleProductInBasket
+                                            variant={ToggleProductInBasketVariant.ICON}
+                                            product={item}
+                                        />
+                                    }
+                                    className={styles.product}
+                                />
+                            )
+                        })}
+                    </ProductsSwiper>
+
+                    <ChevronLeft
+                        className={classNames(styles.chevronLeft, {
+                            [styles.chevronVisible]: isHovered,
+                        })}
+                        onClick={() => swiperRef?.slidePrev()}
+                    />
+
+                    <ChevronRight
+                        className={classNames(styles.chevronRight, {
+                            [styles.chevronVisible]: isHovered,
+                        })}
+                        onClick={() => swiperRef?.slideNext()}
+                    />
                 </div>
             </div>
         </div>

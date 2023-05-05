@@ -8,7 +8,7 @@ import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
 import { Product } from "../../model/types"
-import { ProductDetailsSkeleton } from "../ProductDetailsSkeleton/ProductDetailsSkeleton"
+import { ProductDetailsSkeleton } from "./ProductDetailsSkeleton/ProductDetailsSkeleton"
 
 interface ProductDetailsProps extends Product {
     isLoading: boolean

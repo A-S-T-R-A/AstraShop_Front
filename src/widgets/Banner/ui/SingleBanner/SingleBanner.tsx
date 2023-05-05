@@ -5,6 +5,7 @@ import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { useEffect, useState } from "react"
 import { DeviceType, getCurrentDevice } from "../../lib/getCurrentDeviceBanner"
 import styles from "./SingleBanner.module.scss"
+import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
 
 interface ISingleBannerProps {
     imgIndex: number
@@ -36,7 +37,7 @@ export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
                 navigate(link)
             }}
         >
-            <img className={styles.img} src={imgSrc} alt="" />
+            {banner ? <img className={styles.img} src={imgSrc} alt="" /> : <BannerSkeleton />}
         </div>
     )
 }

@@ -14,8 +14,9 @@ export function ProductCardSkeleton({ className }: ProductCarSkeletonProps) {
             </div>
             <div className={styles.footer}>
                 <Skeleton width="150px" height={18} />
+                <Skeleton width="125px" height={18} />
                 <div className={styles.price}>
-                    <Skeleton width="75px" height={18} />
+                    <Skeleton width="50px" height={18} />
                 </div>
             </div>
         </div>

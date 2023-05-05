@@ -1,7 +1,10 @@
+import { ProductCard } from "entities/Product"
+import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { useTranslation } from "react-i18next"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { CompareProducts, AddProductToFavorite } from "features/productFeatures"
 import {
     getProductCarouselErrorNew,
     getProductCarouselErrorTop,
@@ -45,6 +48,8 @@ export function ProductsRow(props: IProductsRowProps) {
     const isNew = variant === ProducstRowVariant.NEW_PRODUCTS
     const isTop = variant === ProducstRowVariant.TOP_PRODUCTS
 
+    const productsList = isTop ? topProducts : newProducts
+
     useEffect(() => {
         if (isNew && !newProducts?.length && !isLoadingNew && !errorNew) {
             dispatch(fetchNewProducts())
@@ -73,9 +78,32 @@ export function ProductsRow(props: IProductsRowProps) {
                 <ProductsSwiper
                     variant={IProductSwiperVariant.FULL}
                     isLoading={false}
-                    list={topProducts || []}
                     isWithPagination
-                />
+                >
+                    {productsList?.map(item => {
+                        const { id, name, price, images, is_new: isNew } = item
+
+                        return (
+                            <ProductCard
+                                key={id}
+                                id={id}
+                                is_new={isNew}
+                                name={name}
+                                price={price}
+                                images={images}
+                                Basket={
+                                    <ToggleProductInBasket
+                                        variant={ToggleProductInBasketVariant.ICON}
+                                        product={item}
+                                    />
+                                }
+                                AddProductToFavorite={<AddProductToFavorite />}
+                                CompareProducts={<CompareProducts />}
+                                className={styles.product}
+                            />
+                        )
+                    })}
+                </ProductsSwiper>
             </div>
         </div>
     )

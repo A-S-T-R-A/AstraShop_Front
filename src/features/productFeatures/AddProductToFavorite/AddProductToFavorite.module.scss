@@ -1,0 +1,10 @@
+.heartIcon {
+    width: 30px;
+    fill: var(--color-white);
+    stroke: var(--color-base);
+
+    &.active {
+        fill: var(--color-attention);
+        stroke: var(--color-attention);
+    }
+}

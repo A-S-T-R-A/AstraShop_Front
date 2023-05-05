@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { CrossIcon, MobileBurgerIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useTranslation } from "react-i18next"
-import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./HeaderLeft.module.scss"
 
 interface HeaderLeftProps {
@@ -30,7 +30,12 @@ export function HeaderLeft({ className, isMainPage }: HeaderLeftProps) {
                 )
             case ModalsList.BASKET:
                 return window.innerWidth < 769 ? (
-                    <Typography variant={TypographyVariant.H3}>{t("basket")}</Typography>
+                    <Typography
+                        variant={TypographyVariant.H3}
+                        color={isMainPage ? TypographyColor.INVERTED : TypographyColor.BASE}
+                    >
+                        {t("basket")}
+                    </Typography>
                 ) : (
                     <MobileBurgerIcon
                         className={classNames(styles.icon, { [styles.inverted]: isMainPage })}

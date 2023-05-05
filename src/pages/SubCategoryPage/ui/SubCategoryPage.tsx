@@ -52,7 +52,7 @@ export function SubCategoryPage() {
         return null
     }
 
-    if (categoryRequestError) {
+    if (categoryRequestError && categoryRequestError !== "No Products") {
         return <UnexpectedError />
     }
 
@@ -82,7 +82,7 @@ export function SubCategoryPage() {
 
                     <MobileFilterControllers className={styles.mobileFilters} />
 
-                    {!categoryProducts?.length && !categoryRequestLoading ? (
+                    {categoryRequestError === "No Products" && !categoryRequestLoading ? (
                         <NoProducts
                             onReturnClick={() => {
                                 navigate(`${RoutePath.category}/${parentCategoryId}`)

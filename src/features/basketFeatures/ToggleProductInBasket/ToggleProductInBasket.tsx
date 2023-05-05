@@ -38,7 +38,13 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
 
     switch (variant) {
         case ToggleProductInBasketVariant.ICON:
-            return <ToggleBasketIcon onClick={clickHandler} isFilled={isProductInBasket} />
+            return (
+                <ToggleBasketIcon
+                    onClick={clickHandler}
+                    isFilled={isProductInBasket}
+                    className={styles.icon}
+                />
+            )
         case ToggleProductInBasketVariant.BUTTON:
             return (
                 <Button onClick={clickHandler} className={styles.btn}>

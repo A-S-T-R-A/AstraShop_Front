@@ -1,0 +1,9 @@
+.scaleIcon {
+    width: 30px;
+    fill: var(--color-white);
+    stroke: var(--color-base);
+
+    &.active {
+        stroke: var(--color-attention);
+    }
+}

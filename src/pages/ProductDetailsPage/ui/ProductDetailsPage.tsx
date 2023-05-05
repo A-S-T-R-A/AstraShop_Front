@@ -22,6 +22,7 @@ import {
     getProductDetailsPrice,
     getProductParents,
 } from "../model/selectors/productDetailsSelectors"
+import { ProductMenu } from "./ProductMenu/ProductMenu"
 
 export function ProductDetailsPage() {
     const dispatch = useDispatch()
@@ -79,7 +80,14 @@ export function ProductDetailsPage() {
     return (
         <div>
             <Breadcrumbs />
-            <ProductDetails
+            <ProductMenu />
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
+            <BannersRow />
+        </div>
+    )
+}
+
+/*  <ProductDetails
                 isLoading={productRequestLoading}
                 error={productRequestError}
                 is_new={prodductIsNew}
@@ -98,7 +106,4 @@ export function ProductDetailsPage() {
                 }
             />
             <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
-            <BannersRow />
-        </div>
-    )
-}
+            <BannersRow /> */

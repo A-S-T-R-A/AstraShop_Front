@@ -1,0 +1,34 @@
+.navigation {
+    background: var(--color-white);
+    margin-bottom: 30px;
+    height: 50px;
+    min-width: 100%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.navItem {
+    cursor: pointer;
+    letter-spacing: 1.3px;
+    font-size: var(--font-size-base);
+
+    &.navActive {
+        color: var(--color-accent);
+    }
+
+    &:hover {
+        color: var(--color-accent);
+    }
+}
+
+@media (min-width: 481px) {
+    .navigation {
+        gap: 30px;
+        padding: 0 30px;
+        min-width: fit-content;
+    }
+}

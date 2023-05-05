@@ -1,0 +1,55 @@
+.info {
+    height: 100%;
+    width: 100%;
+
+    .title {
+        margin-bottom: 10px;
+    }
+}
+
+.article {
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .title {
+        margin-bottom: 8px;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
+    }
+
+    .articleTextList {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        max-width: 300px;
+    }
+
+    .text {
+        margin-bottom: 8px;
+        word-break: break-all;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .list {
+        padding-left: 2px;
+        text-indent: 5px;
+
+        li::marker {
+            content: "•";
+            font-size: var(--font-size-base);
+            color: var(--color-dark-gray);
+        }
+    }
+}

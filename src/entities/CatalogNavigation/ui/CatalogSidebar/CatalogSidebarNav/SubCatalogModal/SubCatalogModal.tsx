@@ -78,6 +78,7 @@ export const SubCatalogModal = (props: ModalProps) => {
                         const { id, categories: subCategories } = item
                         return (
                             <div
+                                key={id}
                                 className={classNames(
                                     cls.subMenuModalContainer,
                                     { [cls.none]: hoveredId !== id },

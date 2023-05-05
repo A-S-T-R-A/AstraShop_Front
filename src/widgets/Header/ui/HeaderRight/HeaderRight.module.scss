@@ -1,3 +1,15 @@
 .basket {
     grid-area: basket;
 }
+
+.cross {
+    fill: var(--color-dark-gray);
+
+    &.inverted {
+        fill: var(--color-white);
+
+        path {
+            fill: var(--color-white);
+        }
+    }
+}
