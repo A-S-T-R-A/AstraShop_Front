@@ -1,5 +1,6 @@
 import { Layout, LayoutIsland } from "../Layout/Layout"
 import { ProductGallery } from "./ProductGallery/ProductGallery"
+import { productInfoIsland as ProductInfoIsland } from "./ProductInfoIsland/ProductInfoIsland"
 
 export function ProductAll() {
     return (
@@ -9,7 +10,7 @@ export function ProductAll() {
             </LayoutIsland>
 
             <LayoutIsland column="right" height="100px">
-                Price
+                <ProductInfoIsland />
             </LayoutIsland>
 
             <LayoutIsland column="left" height="50px">
