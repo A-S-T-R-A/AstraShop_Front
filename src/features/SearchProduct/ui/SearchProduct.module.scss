@@ -13,13 +13,13 @@
     input {
         background-color: #f7f7f7;
         padding-left: 40px;
-        z-index: 2;
+        z-index: calc(var(--z-header) + 2);
     }
 }
 
 .icon {
     position: absolute;
-    z-index: 3;
+    z-index: calc(var(--z-header) + 3);
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
@@ -28,7 +28,7 @@
 
 .cross {
     position: absolute;
-    z-index: 3;
+    z-index: calc(var(--z-header) + 3);
     right: 10px;
     top: 50%;
     transform: translateY(-50%);

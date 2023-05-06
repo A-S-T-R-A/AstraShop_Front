@@ -1,6 +1,7 @@
 export { ProductCard } from "./ui/ProductCard/ProductCard"
-export { ProductCardSkeleton } from "./ui/ProductCardSkeleton/ProductCardSkeleton"
-export { ProductDetails } from "./ui/ProductDetails/ProductDetails"
+export { ProductCardSale } from "./ui/ProductCardSale/ProductCardSale"
+export { ProductCardSaleSkeleton } from "./ui/ProductCardSale/ProductCardSaleSkeleton/ProductCardSaleSkeleton"
+export { ProductCardSkeleton } from "./ui/ProductCard/ProductCardSkeleton/ProductCardSkeleton"
 export { ProductCardBasket } from "./ui/ProductCardBasket/ProductCardBasket"
 
-export type { Product } from "./model/types"
+export type { Product, ProductAttribute } from "./model/types"

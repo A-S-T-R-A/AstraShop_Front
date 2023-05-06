@@ -1,58 +1,53 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/const"
-import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { BoxIcon } from "shared/assets/icons/list"
+import { ChevronRightSimple } from "shared/assets/icons/others"
 import styles from "./CatalogSidebarNav.module.scss"
-import { navigationSubcategory, navigationTreeType } from "../../../model/types/list"
+import { CatalogModal } from "./CatalogModal/CatalogModal"
+import { SubCatalogModal } from "./SubCatalogModal/SubCatalogModal"
+import { navigationTreeType } from "../../../model/types/list"
 import { fetchNavigationTree } from "../../../model/services/fetchNavigationTree/fetchNavigationTree"
 import {
     getNavigationTree,
     getNavigationTreeError,
 } from "../../../model/selectors/sidebarNavigationSelectors"
 
-interface SubMenuProps {
-    list: navigationSubcategory[]
-    isOpen: boolean
-    onLinkClick?: () => void
-}
-
-function SubMenu({ list, isOpen, onLinkClick }: SubMenuProps) {
-    if (!isOpen) return null
-
-    return (
-        <div className={styles.subMenu}>
-            {list.map(item => {
-                const { id, name } = item
-                return (
-                    <AppLink key={id} to={`${RoutePath.sub_category}/${id}`} onClick={onLinkClick}>
-                        {name}
-                    </AppLink>
-                )
-            })}
-        </div>
-    )
-}
-
 export function CatalogSidebarNav() {
     const [hovered, setHovered] = useState(-1)
-
+    const [modalIsOpen, setModalIsOpen] = useState(false)
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+    function modalOpenHandler() {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+        }
+        timeoutRef.current = setTimeout(() => {
+            setModalIsOpen(true)
+        }, 200)
+    }
+
+    function modalCloseHandler() {
+        setModalIsOpen(false)
+        setHovered(-1)
+    }
 
     function mouseEnterHandler(id: number) {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current)
             timeoutRef.current = null
         }
-
-        setHovered(id)
+        timeoutRef.current = setTimeout(() => {
+            setHovered(id)
+        }, 200)
     }
 
-    function mouseLeaveHandler() {
-        timeoutRef.current = setTimeout(() => {
-            setHovered(-1)
-        }, 200)
+    const mouseLeaveHandler = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+        }
     }
 
     const dispatch = useDispatch()
@@ -65,38 +60,62 @@ export function CatalogSidebarNav() {
         }
     }, [dispatch, navigationTree, error])
 
+    const containerRef = useRef<HTMLDivElement>(null)
+    const containerWidth = containerRef.current?.clientWidth
+    const containerHeight = containerRef.current?.clientHeight
+    const containerCoordinate = containerRef.current?.getBoundingClientRect()
+
     return (
-        <>
-            <div className={classNames(styles.overlay, { [styles.overlayOn]: hovered !== -1 })} />
+        <div className={styles.wrapper} ref={containerRef}>
             <div className={styles.container}>
                 {navigationTree.map(item => {
-                    const { id, categories: subCategories, icon } = item
+                    const { id, icon } = item
                     return (
                         <div
                             key={id}
-                            onMouseEnter={() => mouseEnterHandler(id)}
-                            onMouseLeave={mouseLeaveHandler}
                             className={styles.linkContainer}
+                            onMouseEnter={modalOpenHandler}
+                            onMouseLeave={mouseLeaveHandler}
                         >
+                            {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                             <AppLink
                                 to={`${RoutePath.category}/${id}`}
                                 onClick={() => setHovered(-1)}
                                 className={styles.link}
                             >
-                                {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                                 {item.name}
                             </AppLink>
-                            <SubMenu
-                                list={subCategories}
-                                isOpen={
-                                    hovered === id && !!subCategories && subCategories?.length > 0
-                                }
-                                onLinkClick={() => setHovered(-1)}
-                            />
+                            <ChevronRightSimple size={14} />
                         </div>
                     )
                 })}
             </div>
-        </>
+            <CatalogModal
+                isOpen={modalIsOpen}
+                onClose={modalCloseHandler}
+                styles={{
+                    width: `${containerWidth}px`,
+                    height: `${containerHeight}px`,
+                    top: `${Number(containerCoordinate?.top)}px`,
+                    left: `${Number(containerCoordinate?.left)}px`,
+                }}
+                className={styles.modal}
+                navTree={navigationTree}
+                mouseEnter={id => mouseEnterHandler(id)}
+                mouseLeave={mouseLeaveHandler}
+            />
+            <SubCatalogModal
+                styles={{
+                    height: `${containerHeight}px`,
+                    top: `${Number(containerCoordinate?.top)}px`,
+                    left: `${Number(containerCoordinate?.right)}px`,
+                }}
+                isOpen={hovered !== -1}
+                onClose={modalCloseHandler}
+                className={styles.subMenuModal}
+                navTree={navigationTree}
+                hoveredId={hovered}
+            />
+        </div>
     )
 }

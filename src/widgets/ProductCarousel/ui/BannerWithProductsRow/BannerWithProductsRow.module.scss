@@ -1,0 +1,28 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+}
+
+.banner {
+    padding-bottom: 20px;
+    min-height: 300px;
+
+    * {
+        border-radius: 6px;
+    }
+}
+
+.swiperContainer {
+    display: grid;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 960px) {
+    .content {
+        grid-template-columns: 1fr 2fr;
+    }
+}

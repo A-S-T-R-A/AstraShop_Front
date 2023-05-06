@@ -3,32 +3,44 @@ import { ButtonHTMLAttributes, memo, ReactNode } from "react"
 import styles from "./Button.module.scss"
 
 export enum ButtonVariant {
-    OUTLINE = "outline",
-    CLEAR_INVERTED = "clearInverted",
-    FILLED_RED = "filled-red",
-    FILLED_GREY = "filled-gray",
+    OUTLINED = "outlined",
+    CLEAR = "clear",
+    FILLED = "filled",
+}
+
+export enum ButtonColor {
+    ACCENT = "accent",
+    ATTENTION = "attention",
+    INVERTED = "inverted",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     variant?: ButtonVariant
+    color?: ButtonColor
     disabled?: boolean
     children?: ReactNode
 }
 
 export const Button = memo((props: ButtonProps) => {
-    const { className, variant = ButtonVariant.OUTLINE, disabled, children, ...restProps } = props
-
-    const mods: Mods = {
-        [styles[variant]]: true,
-        [styles.disabled]: disabled,
-    }
+    const {
+        className,
+        variant = ButtonVariant.OUTLINED,
+        disabled,
+        color = ButtonColor.ACCENT,
+        children,
+        ...restProps
+    } = props
 
     return (
         <button
             data-testid="button"
             type="button"
-            className={classNames(styles.button, mods, [className])}
+            className={classNames(styles.button, { [styles.disabled]: disabled }, [
+                styles[variant],
+                styles[color],
+                className,
+            ])}
             disabled={disabled}
             {...restProps}
         >

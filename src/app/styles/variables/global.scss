@@ -8,16 +8,27 @@
     --font-size-base: 16px;
     --font-size-small: 14px;
     --font-size-extra-small: 12px;
-    --modal-z-index: 10;
-    --navbar-height: 64px;
     --color-modal-overlay: rgba(12 31 49 / 49%);
     --color-error: #f82929;
+
+    /* sizes */
+    --navbar-height: 64px;
     --sidebar-width: 312px;
+
+    /* z indexes */
+    --z-content: 200;
+    --z-page: 300;
+    --z-sidebar: 400;
+    --z-footer: 500;
+    --z-header: 600;
+    --z-modal: 900;
+
+    /*  --z-fixed: 800; */
 }
 
 @media (min-width: 769px) {
     :root {
-        --navbar-height: 86px;
+        --navbar-height: 70px;
     }
 }
 

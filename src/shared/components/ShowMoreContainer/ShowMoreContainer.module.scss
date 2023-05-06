@@ -1,0 +1,39 @@
+.wrapper {
+    width: 100%;
+    max-height: 200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    flex-grow: 0;
+
+    &.expanded {
+        max-height: fit-content;
+    }
+}
+
+.container {
+    padding: 10px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.overflowing {
+    .container {
+        padding-bottom: 0;
+    }
+}
+
+.btnContainer {
+    height: 70px;
+    display: flex;
+}
+
+.btn {
+    margin: 0 auto;
+    margin-bottom: 10px;
+}

@@ -3,6 +3,7 @@ import { Product } from "entities/Product"
 import { fetchNewProducts } from "../services/fetchNewProducts/fetchNewProducts"
 import { fetchTopProducts } from "../services/fetchTopProducts/fetchTopProducts"
 import { ProductCarouselSchema } from "../types/productDetailsSchema"
+import { plugProductsData } from "../../const/plug"
 
 const initialState: ProductCarouselSchema = {
     topProducts: undefined,

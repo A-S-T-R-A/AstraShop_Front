@@ -1,6 +1,6 @@
 import { UnexpectedError } from "shared/components/UnexpectedError/UnexpectedError"
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import {
     BasketSummary,
@@ -22,42 +22,43 @@ import styles from "./OrderForm.module.scss"
 import { inputValidations } from "../../lib/inputValidations"
 import { IFormData } from "../../model/types/types"
 import { createNewOrder } from "../../model/services/createNewOrder/createNewOrder"
+import { getInputByName } from "../../lib/getInputByName"
 import {
     getSubmitOrderError,
     getSubmitOrderLoading,
 } from "../../model/selectors/submitOrderSelectors"
+import { InitialFormData, InitialFormErrors, InputsName, initialIsDirty } from "../../const/const"
 
 export function OrderForm() {
-    const [formData, setFormData] = useState<IFormData>({
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        department: "",
-        delivery: "option1",
-        isConsent: true,
-    })
+    const [formData, setFormData] = useState<IFormData>(InitialFormData)
 
     const { t } = useTranslation()
-    const [formErrors, setFormErrors] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        department: "",
-        isConsent: "",
-    })
-
-    const initialIsDirty = {
-        name: false,
-        phone: false,
-        email: false,
-        city: false,
-        department: false,
-        isConsent: false,
-    }
+    const [formErrors, setFormErrors] =
+        useState<Partial<Record<InputsName, string>>>(InitialFormErrors)
 
     const [isDirty, setIsDirty] = useState(initialIsDirty)
+
+    useEffect(() => {
+        const array = Object.entries(formErrors)
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const error of array) {
+            const [key, value] = error
+            if (value.length > 0) {
+                const element = getInputByName(key, styles.input)
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "center",
+                    })
+
+                    element.focus({ preventScroll: true })
+                    break
+                }
+            }
+        }
+    }, [formErrors])
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -118,65 +119,70 @@ export function OrderForm() {
             </Typography>
             <form action="submit" className={styles.form}>
                 <Input
-                    value={formData.name}
-                    onChange={value => inputChangeHandler(value, "name")}
+                    name={InputsName.NAME}
+                    value={formData[InputsName.NAME]}
+                    onChange={value => inputChangeHandler(value, `${InputsName.NAME}`)}
                     label={`${t("orderFormLabelName")}`}
                     placeholder={`${t("orderFormPlaceholderName")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.name])}
-                    error={isDirty.name ? "" : formErrors.name}
+                    error={isDirty[InputsName.NAME] ? "" : formErrors[InputsName.NAME]}
                 />
                 <Input
-                    value={formData.phone}
-                    onChange={value => inputChangeHandler(value, "phone")}
+                    name={InputsName.PHONE}
+                    value={formData[InputsName.PHONE]}
+                    onChange={value => inputChangeHandler(value, `${InputsName.PHONE}`)}
                     label={`${t("orderFormPhoneNumber")}`}
                     placeholder={`${t("orderFormPlaceholderPhone")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.phone])}
-                    error={isDirty.phone ? "" : formErrors.phone}
+                    error={isDirty[InputsName.PHONE] ? "" : formErrors[InputsName.PHONE]}
                 />
                 <Input
-                    value={formData.email}
-                    onChange={value => inputChangeHandler(value, "email")}
+                    name={InputsName.EMAIL}
+                    value={formData[InputsName.EMAIL]}
+                    onChange={value => inputChangeHandler(value, `${InputsName.EMAIL}`)}
                     label="Email"
                     placeholder="example@mail.com"
                     isRequired
                     className={classNames(styles.input, {}, [styles.email])}
-                    error={isDirty.email ? "" : formErrors.email}
+                    error={isDirty[InputsName.EMAIL] ? "" : formErrors[InputsName.EMAIL]}
                 />
                 <Input
-                    value={formData.city}
-                    onChange={value => inputChangeHandler(value, "city")}
+                    name={InputsName.CITY}
+                    value={formData[InputsName.CITY]}
+                    onChange={value => inputChangeHandler(value, `${InputsName.CITY}`)}
                     label={`${t("orderFormLabelCity")}`}
                     placeholder={`${t("orderFormPlaceholderCity")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.city])}
-                    error={isDirty.city ? "" : formErrors.city}
+                    error={isDirty[InputsName.CITY] ? "" : formErrors[InputsName.CITY]}
                 />
                 <RadioGroup
                     title={`${t("orderFormTypeOfDelivery")}`}
                     isRequired
                     options={options.map(option => ({ ...option, label: t(option.label) }))}
-                    activeInput={formData.delivery}
+                    activeInput={formData[InputsName.DELIVERY]}
                     onChange={radioChangeHandler}
                     className={styles.radios}
                 />
                 <Input
-                    value={formData.department}
-                    onChange={value => inputChangeHandler(value, "department")}
+                    name={InputsName.DEPARTMENT}
+                    value={formData[InputsName.DEPARTMENT]}
+                    onChange={value => inputChangeHandler(value, `${InputsName.DEPARTMENT}`)}
                     label={`${t("orderFormLabelPost")}`}
                     placeholder={`${t("orderFormPlaceholderPost")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.department])}
-                    error={isDirty.department ? "" : formErrors.department}
+                    error={isDirty[InputsName.DEPARTMENT] ? "" : formErrors[InputsName.DEPARTMENT]}
                 />
                 <Checkbox
                     id="checkbox1"
-                    checked={formData.isConsent}
+                    checked={formData[InputsName.IS_CONSENT]}
                     onChange={checkboxChangeHandler}
                     label={`${t("orderFormLabelAgreement")}`}
                     className={styles.consent}
-                    error={isDirty.isConsent ? "" : formErrors.isConsent}
+                    error={isDirty[InputsName.IS_CONSENT] ? "" : formErrors[InputsName.IS_CONSENT]}
                 />
                 <BasketSummary
                     className={styles.orderInfo}

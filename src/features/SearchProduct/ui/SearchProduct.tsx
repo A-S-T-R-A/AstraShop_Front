@@ -1,7 +1,7 @@
-import { useRef, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { Input } from "shared/ui/Input/Input"
-import { DeleteSeacrhbarIcon, SearchIcon } from "shared/assets/icons/others"
+import { CrossIcon, SearchIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useTranslation } from "react-i18next"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
@@ -64,7 +64,7 @@ export function SearchProduct({ className }: SearchProductProps) {
                     []
                 )}
             />
-            {value && <DeleteSeacrhbarIcon className={styles.cross} onClick={() => setValue("")} />}
+            {value && <CrossIcon size={20} className={styles.cross} onClick={() => setValue("")} />}
             <Input
                 value={value}
                 onChange={value => changeHandler(value)}

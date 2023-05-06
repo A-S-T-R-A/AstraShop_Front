@@ -3,18 +3,27 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { Label, LabelColor, LabelFontSize } from "shared/ui/Label/Label"
 import styles from "./SmallBasket.module.scss"
 
-const BASKET_COUNT = 0
+export enum SmallBasketColor {
+    NORMAL = "normal",
+    INVERTED = "inverted",
+}
 
 interface SmallBasketProps {
     className?: string
     onClick: () => void
     basketCount: number
+    color?: SmallBasketColor
 }
 
-export function SmallBasket({ className, onClick, basketCount }: SmallBasketProps) {
+export function SmallBasket({
+    className,
+    onClick,
+    basketCount,
+    color = SmallBasketColor.NORMAL,
+}: SmallBasketProps) {
     return (
         <div className={classNames(styles.container, {}, [className])} onClick={onClick}>
-            <ShoppingBagIcon className={styles.icon} />
+            <ShoppingBagIcon className={classNames(styles.icon, {}, [styles[color]])} />
             <Label
                 value={basketCount}
                 fontSize={LabelFontSize.FONT_NORMAL}

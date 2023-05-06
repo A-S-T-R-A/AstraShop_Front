@@ -1,4 +1,5 @@
 import { classNames } from "shared/lib/classNames/classNames"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
@@ -7,8 +8,9 @@ import { useTranslation } from "react-i18next"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
-import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
+import { getProductFilters } from "../model/selectors/filterProductsSelectors"
 import { FilterItemAttribute, FilterItemPriceRange } from "../model/types/types"
+import { filterProductsActions } from "../model/slice/filterProductsSlice"
 
 interface FilterProductsProps {
     className?: string
@@ -17,6 +19,19 @@ interface FilterProductsProps {
 
 export function FilterProducts({ className, onChangeFilters }: FilterProductsProps) {
     const data = useSelector(getProductFilters) || []
+    const dispatch = useDispatch()
+    const currentModal = useSelector(getModalsCurrent)
+    const { t } = useTranslation()
+    function onClose() {
+        dispatch(modalsActions.close())
+    }
+
+    useEffect(
+        () => () => {
+            dispatch(filterProductsActions.resetFilters())
+        },
+        [dispatch]
+    )
 
     const content = (
         <div className={styles.sidebarContainer}>
@@ -25,21 +40,18 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                     const range = item.info as FilterItemPriceRange
                     return (
                         <PriceFilter
-                            key={item.id}
+                            key={item.name + item.id}
                             title={item.name}
                             range={range}
                             onChangeFilters={onChangeFilters}
                         />
                     )
                 }
-                return null
-            })}
-            {data.map(item => {
                 if (item.type === "attributes") {
                     const range = item.info as FilterItemAttribute[]
                     return (
                         <CheckboxGroup
-                            key={item.id}
+                            key={item.name + item.id}
                             list={range}
                             title={item.name}
                             onChangeFilters={onChangeFilters}
@@ -51,13 +63,6 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
         </div>
     )
 
-    const dispatch = useDispatch()
-    const currentModal = useSelector(getModalsCurrent)
-    const { t } = useTranslation()
-    function onClose() {
-        dispatch(modalsActions.close())
-    }
-
     return (
         <>
             <ModalSlider
@@ -66,7 +71,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 className={classNames(styles.modal, {}, [className])}
             >
                 {content}
-                <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
+                <Button variant={ButtonVariant.FILLED} className={styles.btn} onClick={onClose}>
                     {t("apply")}
                 </Button>
             </ModalSlider>

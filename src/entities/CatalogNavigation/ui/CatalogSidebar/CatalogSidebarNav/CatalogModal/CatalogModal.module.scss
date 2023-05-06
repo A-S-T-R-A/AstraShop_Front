@@ -1,0 +1,115 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+    color: var(--color-base);
+    transition: 0.3s all ease;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: var(--color-modal-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+}
+
+.content {
+    background-color: white;
+    position: absolute;
+    padding: 10px 5px;
+    border-radius: 5px 0 0 5px;
+
+    .modalContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        &:hover::-webkit-scrollbar {
+            width: 3px;
+            background-color: var(--color-light-gray);
+            border-radius: 10px;
+        }
+
+        &:hover::-webkit-scrollbar-thumb {
+            background-color: var(--color-dark-gray);
+            border-radius: 10px;
+            background-clip: padding-box;
+        }
+    }
+}
+
+.modalLinkContainer {
+    min-height: 45px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20px minmax(150px, 1fr) 40px;
+    column-gap: 10px;
+
+    svg {
+        justify-self: center;
+    }
+
+    img {
+        width: 25px;
+        margin: 0 5px;
+    }
+
+    .modalLink {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: var(--font-size-base);
+    }
+
+    &:hover {
+        background-color: var(--color-accent);
+        border-radius: 6px;
+
+        a {
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        img {
+            fill: var(--color-white);
+        }
+    }
+}
+
+.isOpen {
+    pointer-events: auto;
+    z-index: var(--z-modal);
+    transition: 0.3s all ease;
+
+    .overlay {
+        opacity: 1;
+    }
+}
+
+.isOpening {
+    .overlay {
+        opacity: 0;
+    }
+}
+
+.isClosing {
+    .overlay {
+        opacity: 0;
+    }
+}

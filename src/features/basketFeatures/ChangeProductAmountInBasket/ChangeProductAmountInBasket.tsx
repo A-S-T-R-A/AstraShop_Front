@@ -1,8 +1,7 @@
 import { MinusIcon, PlusIcon } from "shared/assets/icons/others"
-import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { ChangeEvent } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getBasketProductQuantityById } from "entities/Basket/model/selectors/basketSelectors"
-import { basketActions } from "entities/Basket"
+import { basketActions, getBasketProductQuantityById } from "entities/Basket"
 import styles from "./ChangeProductAmountInBasket.module.scss"
 
 interface ChangeProductAmountInBasketProps {
@@ -21,10 +20,21 @@ export function ChangeProductAmountInBasket({ id }: ChangeProductAmountInBasketP
         dispatch(basketActions.decrementInBasket(id))
     }
 
+    function setQuantity(e: ChangeEvent) {
+        const target = e.target as HTMLInputElement
+        const { value } = target
+        const quantity = Number(value)
+
+        if (Number.isNaN(quantity)) return
+        if (quantity < 1) return
+
+        dispatch(basketActions.setQuantityInBasket({ id, quantity }))
+    }
+
     return (
         <div className={styles.container}>
             <MinusIcon className={styles.icon} onClick={decrement} />
-            <Typography variant={TypographyVariant.P}>{quantity}</Typography>
+            <input type="text" value={quantity} className={styles.input} onChange={setQuantity} />
             <PlusIcon className={styles.icon} onClick={increment} />
         </div>
     )

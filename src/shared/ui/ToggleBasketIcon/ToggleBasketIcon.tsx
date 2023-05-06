@@ -1,4 +1,4 @@
-import { AddToBasket, BasketSuccess } from "shared/assets/icons/others"
+import { AddToBasketIcon, BasketSuccessIcon } from "shared/assets/icons/others"
 import { MouseEvent } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./ToggleBasketIcon.module.scss"
@@ -13,9 +13,9 @@ export function ToggleBasketIcon({ onClick, isFilled = false, className }: Toggl
     return (
         <div onClick={onClick} className={classNames(styles.iconContainer, {}, [className])}>
             {isFilled ? (
-                <BasketSuccess className={styles.basketSuccess} />
+                <BasketSuccessIcon className={styles.iconSuccess} />
             ) : (
-                <AddToBasket className={styles.addToBasket} />
+                <AddToBasketIcon className={styles.iconAdd} />
             )}
         </div>
     )

@@ -16,11 +16,7 @@ export function NotFoundPage() {
     return (
         <div className={styles.wrapper}>
             <Typography variant={TypographyVariant.H2}>{t("pageDoesNotExist")}</Typography>
-            <Button
-                variant={ButtonVariant.FILLED_RED}
-                className={styles.btn}
-                onClick={clickHandler}
-            >
+            <Button variant={ButtonVariant.FILLED} className={styles.btn} onClick={clickHandler}>
                 {t("toMainPage")}
             </Button>
         </div>

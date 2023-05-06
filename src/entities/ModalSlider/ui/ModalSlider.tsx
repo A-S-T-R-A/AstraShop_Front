@@ -1,7 +1,9 @@
 import { ReactNode, useEffect, useRef } from "react"
+import { useSelector } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
-import { Modal } from "shared/ui/Modal/Modal"
+import { Modal } from "shared/ui/Modal"
 import styles from "./ModalSlider.module.scss"
+import { getModalsCurrent } from "../model/selectors/getModalsCurrent/getModalsCurrent"
 
 export enum ModalSliderVariant {
     SLIDER = "slider",
@@ -34,6 +36,7 @@ export function ModalSlider(props: ModalSliderProps) {
         containerHeight,
     } = props
     const wrapperRef = useRef(null)
+    const currentModal = useSelector(getModalsCurrent)
 
     const wrapperClassName = classNames(
         styles.wrapper,
@@ -50,8 +53,12 @@ export function ModalSlider(props: ModalSliderProps) {
     }
 
     useEffect(() => {
-        document.documentElement.classList.toggle("noScroll", isOpen)
-    }, [isOpen])
+        if (currentModal) {
+            document.body.classList.add("noScroll")
+        } else {
+            document.body.classList.remove("noScroll")
+        }
+    }, [currentModal])
 
     return variant === ModalSliderVariant.MODAL ? (
         <Modal isOpen={isOpen} onClose={onClose} className={className}>

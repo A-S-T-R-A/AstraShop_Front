@@ -1,0 +1,52 @@
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+
+    .productName {
+        margin-bottom: 10px;
+    }
+
+    .stock {
+        margin-bottom: 10px;
+    }
+
+    .price {
+        margin-bottom: 15px;
+    }
+
+    .btnContainer {
+        row-gap: 10px;
+        column-gap: 20px;
+        display: flex;
+        flex-direction: column;
+
+        & button {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 481px) {
+    .container {
+        .btnContainer {
+            flex-direction: row;
+        }
+    }
+}
+
+@media (min-width: 961px) {
+    .container {
+        .btnContainer {
+            flex-direction: column;
+        }
+    }
+}
+
+@media (min-width: 1350px) {
+    .container {
+        .btnContainer {
+            flex-direction: row;
+        }
+    }
+}

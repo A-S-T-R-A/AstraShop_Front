@@ -2,14 +2,23 @@ import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ChangeLanguageIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { Button, ButtonColor, ButtonVariant } from "shared/ui/Button/Button"
 import i18n from "shared/config/i18n/i18n"
 import { changeLanguageActions } from "../model/slice/changeLanguageSlice"
 import { getStorageLanguage } from "../model/selectors/changeLanguageSelectors"
 import { Languages, languagesData } from "../config/config"
 import styles from "./ChangeLanguage.module.scss"
 
-export function ChangeLanguage() {
+export enum ChangeLanguageColor {
+    NORMAL = "normal",
+    INVERTED = "inverted",
+}
+
+interface IChangeLanguageProps {
+    color?: ChangeLanguageColor
+}
+
+export function ChangeLanguage({ color = ChangeLanguageColor.NORMAL }: IChangeLanguageProps) {
     const currentLanguage = useSelector(getStorageLanguage)
     const [dropdownActive, setDropdownActive] = useState(false)
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -40,6 +49,7 @@ export function ChangeLanguage() {
             setDropdownActive(false)
         }, delay)
     }
+
     return (
         <div
             className={styles.wrapper}
@@ -47,28 +57,41 @@ export function ChangeLanguage() {
             onMouseEnter={onMouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
         >
-            <ChangeLanguageIcon className={styles.menuItem} />
+            <ChangeLanguageIcon className={classNames(styles.menuItem, {}, [styles[color]])} />
             {dropdownActive && (
                 <div ref={dropdownRef} className={styles.languageListContainer}>
                     {languagesData.map(language => {
-                        const { id, text, languagesCode } = language
+                        const { id, text, languagesCode, Icon } = language
 
                         return (
-                            <Button
+                            <div
                                 key={id}
-                                variant={ButtonVariant.CLEAR_INVERTED}
+                                className={styles.languageContainer}
                                 onClick={e => {
                                     e.stopPropagation()
                                     languageClickHandler(languagesCode)
                                 }}
-                                className={classNames(
-                                    styles.btn,
-                                    { [styles.active]: currentLanguage === languagesCode },
-                                    []
-                                )}
                             >
-                                {text}
-                            </Button>
+                                <Icon
+                                    className={classNames(
+                                        styles.icon,
+                                        { [styles.active]: currentLanguage === languagesCode },
+                                        []
+                                    )}
+                                />
+                                <Button
+                                    key={id}
+                                    variant={ButtonVariant.CLEAR}
+                                    color={ButtonColor.INVERTED}
+                                    className={classNames(
+                                        styles.btn,
+                                        { [styles.active]: currentLanguage === languagesCode },
+                                        []
+                                    )}
+                                >
+                                    {text}
+                                </Button>
+                            </div>
                         )
                     })}
                 </div>

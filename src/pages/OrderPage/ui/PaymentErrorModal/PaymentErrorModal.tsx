@@ -43,7 +43,7 @@ export function PaymentErrorModal() {
             <Typography className={styles.text} variant={TypographyVariant.P}>
                 {t("paymentNotAccepted")}
             </Typography>
-            <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
+            <Button variant={ButtonVariant.FILLED} className={styles.btn} onClick={onClose}>
                 {t("returnBtn")}
             </Button>
         </ModalSlider>

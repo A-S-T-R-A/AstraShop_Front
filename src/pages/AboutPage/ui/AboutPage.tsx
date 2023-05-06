@@ -1,7 +1,7 @@
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
-import { BannersRow } from "widgets/BannersRow"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
+import { BannersRow } from "widgets/Banner"
 import { useTranslation } from "react-i18next"
+import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import styles from "./AboutPage.module.scss"
 
 export function AboutPage() {
@@ -28,7 +28,7 @@ export function AboutPage() {
                 <br />
                 {t("aboutUsDeliveryInfo4thPart")}
             </Typography>
-            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )

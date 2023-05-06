@@ -23,4 +23,5 @@ export interface Product {
     attributes?: ProductAttribute[]
     parent_category_id?: number
     parentCategories?: ProductParentCategory[]
+    quantity?: number
 }

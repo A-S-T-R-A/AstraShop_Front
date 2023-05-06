@@ -12,11 +12,7 @@ export function ErrorPage() {
     return (
         <div className={styles.wrapper}>
             <Typography variant={TypographyVariant.H1}>{t("errorPageError")}</Typography>
-            <Button
-                variant={ButtonVariant.FILLED_RED}
-                className={styles.btn}
-                onClick={clickHandler}
-            >
+            <Button variant={ButtonVariant.FILLED} className={styles.btn} onClick={clickHandler}>
                 {t("errorPageComeBackToMain")}
             </Button>
         </div>

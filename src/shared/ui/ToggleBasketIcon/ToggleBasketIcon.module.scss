@@ -1,4 +1,4 @@
-.addToBasket {
+.iconAdd {
     cursor: pointer;
 
     &:hover {
@@ -6,6 +6,10 @@
     }
 }
 
-.basketSuccess {
-    cursor: pointer;
+.iconSuccess {
+    fill: var(--color-accent);
+
+    & > path:last-child {
+        fill: var(--color-white); // for tick on cart icon
+    }
 }

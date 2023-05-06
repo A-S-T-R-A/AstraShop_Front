@@ -23,12 +23,13 @@ export function BasketItemsList({ list }: BasketItemsListProps) {
         <div className={styles.container}>
             {!!list &&
                 list.map(item => {
-                    const { id, name, price, images } = item
+                    const { id, name, price, images, quantity = 1 } = item
                     return (
                         <ProductCardBasket
                             key={id}
                             id={id}
                             images={images}
+                            quantity={quantity}
                             name={name}
                             price={price}
                             currency="$"

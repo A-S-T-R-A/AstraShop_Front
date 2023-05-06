@@ -29,7 +29,6 @@ export function SubCategoryPage() {
     const dispatch = useDispatch()
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
-
     const categoryName = useSelector(getSubCategoryName)
     const categoryProducts = useSelector(getSubCategoryProducts)
     const categoryRequestLoading = useSelector(getSubCategoryLoading)
@@ -53,7 +52,7 @@ export function SubCategoryPage() {
         return null
     }
 
-    if (categoryRequestError) {
+    if (categoryRequestError && categoryRequestError !== "No Products") {
         return <UnexpectedError />
     }
 
@@ -83,7 +82,7 @@ export function SubCategoryPage() {
 
                     <MobileFilterControllers className={styles.mobileFilters} />
 
-                    {!categoryProducts?.length && !categoryRequestLoading ? (
+                    {categoryRequestError === "No Products" && !categoryRequestLoading ? (
                         <NoProducts
                             onReturnClick={() => {
                                 navigate(`${RoutePath.category}/${parentCategoryId}`)

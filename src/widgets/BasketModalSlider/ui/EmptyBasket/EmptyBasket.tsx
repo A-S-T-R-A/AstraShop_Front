@@ -18,7 +18,7 @@ export function EmptyBasket({ onClose }: EmptyBasketProps) {
             >
                 {t("empty")}
             </Typography>
-            <Button variant={ButtonVariant.FILLED_RED} onClick={onClose}>
+            <Button variant={ButtonVariant.FILLED} onClick={onClose}>
                 {t("continueShopping")}
             </Button>
         </div>

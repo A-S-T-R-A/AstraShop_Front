@@ -33,8 +33,8 @@ export function SortProducts(props: SortProductsProps) {
                 className={styles.btn}
                 variant={
                     sortOrderPattern === sortProductsOrderType.ASC
-                        ? ButtonVariant.FILLED_RED
-                        : ButtonVariant.OUTLINE
+                        ? ButtonVariant.FILLED
+                        : ButtonVariant.OUTLINED
                 }
                 onClick={() => clickHandler(sortProductsOrderType.ASC)}
             >
@@ -44,8 +44,8 @@ export function SortProducts(props: SortProductsProps) {
                 className={styles.btn}
                 variant={
                     sortOrderPattern === sortProductsOrderType.DESC
-                        ? ButtonVariant.FILLED_RED
-                        : ButtonVariant.OUTLINE
+                        ? ButtonVariant.FILLED
+                        : ButtonVariant.OUTLINED
                 }
                 onClick={() => clickHandler(sortProductsOrderType.DESC)}
             >

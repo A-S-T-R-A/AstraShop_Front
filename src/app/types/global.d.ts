@@ -28,3 +28,4 @@ type DeepPartial<T> = T extends object
 type OptionalRecord<K extends keyof any, T> = {
     [P in K]?: T
 }
+type CSSDimensionType = `${number | string}px` | `${number | string}%` | "auto" | 0

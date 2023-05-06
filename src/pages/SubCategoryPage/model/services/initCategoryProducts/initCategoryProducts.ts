@@ -41,6 +41,7 @@ export const initCategoryProducts = createAsyncThunk<
 
         dispatch(subcategoryPageActions.initState())
     }
+
     dispatch(fetchCategoryProducts(id))
     dispatch(fetchCategoryFilters(id))
 })

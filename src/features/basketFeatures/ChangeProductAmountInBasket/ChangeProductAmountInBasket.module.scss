@@ -5,10 +5,6 @@
     width: 100%;
     max-width: 100px;
     user-select: none;
-
-    & > :nth-child(2) {
-        margin: 0 10px;
-    }
 }
 
 .icon {
@@ -18,4 +14,11 @@
     &:hover {
         fill: var(--color-accent);
     }
+}
+
+.input {
+    max-width: 40px;
+    border: none;
+    outline: none;
+    text-align: center;
 }

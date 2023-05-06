@@ -28,6 +28,12 @@ const filterProductsSlice = createSlice({
         setPriceRange: (state, action: PayloadAction<IPriceRange>) => {
             state.priceRange = action.payload
         },
+        resetPriceRange: state => {
+            state.priceRange = undefined
+        },
+        resetFilters: state => {
+            state.filters = []
+        },
     },
     extraReducers: builder => {
         builder

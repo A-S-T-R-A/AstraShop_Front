@@ -1,0 +1,83 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 6px;
+    z-index: var(--z-content);
+    cursor: pointer;
+}
+
+.carousel {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.img {
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.pagination {
+    z-index: calc(var(--z-content) + 1);
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+    background: rgba(0 0 0 / 40%);
+    border-radius: 6px;
+    padding: 3px 7px;
+
+    .bullet {
+        background: var(--color-light-gray);
+        border-radius: 50%;
+        width: 7px;
+        height: 7px;
+        cursor: pointer;
+
+        &.active {
+            border: 0;
+            background: var(--color-accent);
+        }
+    }
+}
+
+.chevronLeftContainer,
+.chevronRightContainer {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+@media (min-width: 961px) {
+    .chevronLeftContainer,
+    .chevronRightContainer {
+        opacity: 0;
+    }
+}
+
+.chevronLeftContainer {
+    left: 20px;
+}
+
+.chevronRightContainer {
+    right: 20px;
+}
+
+.cta {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+.isVisible {
+    opacity: 1;
+}

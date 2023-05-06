@@ -75,7 +75,7 @@ export function BasketSummary(props: BasketSummaryProps) {
                 <Typography className={styles.totalProducts}>{totalQuantity}</Typography>
             </div>
             <div className={styles.buttons}>
-                <Button onClick={orderClickHandler} variant={ButtonVariant.FILLED_RED}>
+                <Button onClick={orderClickHandler} variant={ButtonVariant.FILLED}>
                     {t("basketConfirmTheOrder")}
                 </Button>
                 <Button onClick={exitClickHandler}>{t("continueShopping")}</Button>

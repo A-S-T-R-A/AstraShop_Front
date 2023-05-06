@@ -1,3 +1,1 @@
-import { NavigationList, NavigationListVariant } from "./ui/NavigationList"
-
-export { NavigationList, NavigationListVariant }
+export { NavigationList, NavigationListVariant, NavigationListColor } from "./ui/NavigationList"

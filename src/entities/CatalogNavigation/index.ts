@@ -10,3 +10,4 @@ export { catalogNavigationActions } from "./model/slice/catalogNavigationSlice"
 
 export { CatalogSidebar } from "./ui/CatalogSidebar/CatalogSidebar"
 export { CatalogLinks } from "./ui/CatalogLinks/CatalogLinks"
+export { CatalogSidebarNav } from "./ui/CatalogSidebar/CatalogSidebarNav/CatalogSidebarNav"

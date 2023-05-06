@@ -1,26 +1,39 @@
 .breadcrumbs {
-    display: none;
-}
+    width: 100%;
+    max-width: 80vw;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    padding: 3px 0 6px;
+    margin-bottom: 20px;
 
-@media (min-width: 1200px) {
-    .breadcrumbs {
-        align-self: start;
+    &::-webkit-scrollbar {
+        height: 2px;
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-light-gray);
+        border-radius: 10px;
+        background-clip: padding-box;
+    }
+
+    a:first-child {
         display: flex;
-        align-items: center;
-        margin-bottom: 15px;
+    }
 
-        a:first-child {
-            display: flex;
-        }
+    .crumbs {
+        width: fit-content;
 
-        .crumbs {
-            .link {
-                font-size: 14px;
+        .link {
+            font-size: 14px;
+            overflow: hidden;
+            white-space: nowrap;
 
-                &.active {
-                    color: var(--color-light-gray);
-                    pointer-events: none;
-                }
+            &.active {
+                color: var(--color-light-gray);
+                pointer-events: none;
             }
         }
     }
@@ -35,6 +48,25 @@
     }
 
     .icon {
+        min-width: 15px;
         margin: 0 10px;
+    }
+}
+
+.toolTip {
+    position: fixed;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--color-white);
+    color: var(--color-dark-gray);
+    box-shadow: rgba(0 0 0 / 24%) 0 3px 8px;
+}
+
+@media (min-width: 768px) {
+    .breadcrumbs {
+        &::-webkit-scrollbar {
+            height: 3px;
+        }
     }
 }

@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    border-radius: 6px;
+    background: var(--color-white);
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.img {
+    max-width: 200px;
+    cursor: pointer;
+}

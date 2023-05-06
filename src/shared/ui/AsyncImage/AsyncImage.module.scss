@@ -1,0 +1,57 @@
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.placeholderError {
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-light-gray);
+}
+
+.placeholderImage {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.mainImage {
+    position: absolute;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.opacity {
+    opacity: 0 !important;
+}
+
+.contain {
+    object-fit: contain !important;
+}
+
+.cover {
+    object-fit: cover !important;
+}
+
+.none {
+    object-fit: none !important;
+}
+
+.fill {
+    object-fit: fill !important;
+}
+
+.scale_down {
+    object-fit: scale-down !important;
+}

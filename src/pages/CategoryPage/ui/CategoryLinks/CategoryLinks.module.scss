@@ -19,20 +19,19 @@
 
     .list {
         width: 100%;
-        height: 250px;
+        min-height: 250px;
         display: flex;
         flex-direction: column;
 
         & a {
+            min-height: 20%;
             text-align: center;
-            min-height: fit-content;
         }
 
         .image {
             width: 100%;
-            height: 80%;
+            height: 100%;
             margin-bottom: 10px;
-            object-fit: cover;
         }
     }
 }

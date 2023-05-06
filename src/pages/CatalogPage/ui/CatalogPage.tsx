@@ -1,9 +1,9 @@
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Breadcrumbs, CatalogLinks, catalogNavigationActions } from "entities/CatalogNavigation"
-import { BannersRow } from "widgets/BannersRow"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
+import { BannersRow } from "widgets/Banner"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
+import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import { useTranslation } from "react-i18next"
 import styles from "./CatalogPage.module.scss"
 
@@ -23,7 +23,7 @@ export function CatalogPage() {
                 {t("productsCatalog")}
             </Typography>
             <CatalogLinks />
-            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )

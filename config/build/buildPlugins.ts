@@ -54,11 +54,11 @@ export function buildPlugins({
                 failOnError: true,
             })
         )
-        plugins.push(
-            new BundleAnalyzerPlugin({
-                openAnalyzer: false,
-            })
-        )
+        // plugins.push(
+        //     new BundleAnalyzerPlugin({
+        //         openAnalyzer: false,
+        //     })
+        // )
     }
 
     return plugins

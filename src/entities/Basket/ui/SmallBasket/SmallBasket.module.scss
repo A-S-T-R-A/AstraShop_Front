@@ -5,9 +5,16 @@
 }
 
 .icon {
-    fill: var(--color-dark-gray);
     margin-right: 16px;
     margin-bottom: 3px;
+
+    &.normal {
+        fill: var(--color-dark-gray);
+    }
+
+    &.inverted {
+        fill: var(--color-white);
+    }
 
     &:hover {
         fill: var(--color-accent);

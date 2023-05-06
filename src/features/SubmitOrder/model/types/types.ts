@@ -1,9 +1,11 @@
+import { InputsName } from "features/SubmitOrder/const/const"
+
 export interface IFormData {
-    name: string
-    phone: string
-    email: string
-    city: string
-    department: string
-    delivery: string
-    isConsent: boolean
+    [InputsName.NAME]: string
+    [InputsName.PHONE]: string
+    [InputsName.EMAIL]: string
+    [InputsName.CITY]: string
+    [InputsName.DEPARTMENT]: string
+    [InputsName.DELIVERY]: string
+    [InputsName.IS_CONSENT]: boolean
 }

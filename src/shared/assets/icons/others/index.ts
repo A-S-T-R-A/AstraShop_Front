@@ -6,7 +6,7 @@ import DeleteBucketIcon from "./delete-bucket.svg"
 import PlusIcon from "./plus.svg"
 import MinusIcon from "./minus.svg"
 import MobileBurgerIcon from "./mobile-burger.svg"
-import CrossIcon from "./cross.svg"
+import { CrossIcon } from "./CrossIcon"
 import MasterCardIcon from "./mastercard.svg"
 import VisaIcon from "./visa.svg"
 import FilterIcon from "./filter.svg"
@@ -16,10 +16,13 @@ import IntimeIcon from "./intime.svg"
 import AutoluxIcon from "./autolux.svg"
 import ChevronBack from "./chevron-back.svg"
 import MainHome from "./home.svg"
-import BasketSuccess from "./basket-succsess.svg"
-import AddToBasket from "./basket-add.svg"
+import { BasketSuccessIcon } from "./BasketSuccessIcon"
+import AddToBasketIcon from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
-import DeleteSeacrhbarIcon from "./deleteSeacrhbaricon.svg"
+import { ChevronRight } from "./ChevronRight/ChevronRight"
+import { ChevronLeft } from "./ChevronLeft/ChevronLeft"
+import { ChevronRightSimple } from "./ChevronRightSimple"
+import { ChevronTop } from "./ChevronTop"
 
 export {
     MinusIcon,
@@ -40,8 +43,11 @@ export {
     AutoluxIcon,
     ChevronBack,
     MainHome,
-    BasketSuccess,
-    AddToBasket,
+    BasketSuccessIcon,
+    AddToBasketIcon,
     ChangeLanguageIcon,
-    DeleteSeacrhbarIcon,
+    ChevronLeft,
+    ChevronRight,
+    ChevronRightSimple,
+    ChevronTop,
 }

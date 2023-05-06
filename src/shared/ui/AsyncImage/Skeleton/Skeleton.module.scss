@@ -1,0 +1,14 @@
+.Skeleton {
+    height: 100%;
+    width: 80%;
+    background: #ececec;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: load 1.2s linear infinite;
+}
+
+@keyframes load {
+    to {
+        background-position-x: -200%;
+    }
+}

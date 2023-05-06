@@ -1,4 +1,4 @@
-export { SmallBasket } from "./ui/SmallBasket/SmallBasket"
+export { SmallBasket, SmallBasketColor } from "./ui/SmallBasket/SmallBasket"
 export { BasketSummary } from "./ui/BasketSummary/BasketSummary"
 
 export { BasketSummaryVariant } from "./ui/BasketSummary/BasketSummary"
@@ -10,3 +10,5 @@ export {
     getBasketProductsTotalPrice,
     getBasketProductsTotalQuantity,
 } from "./model/selectors/basketSelectors"
+
+export { getBasketProductQuantityById } from "./model/selectors/basketSelectors"

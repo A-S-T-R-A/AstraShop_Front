@@ -1,0 +1,94 @@
+.wrapper {
+    background: rgb(247 158 27);
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background: linear-gradient(
+        135deg,
+        rgb(247 158 27) 0%,
+        rgb(247 158 27) 2.5%,
+        rgb(255 224 178) 2.5%,
+        rgb(255 224 178) 4%,
+        var(--color-white) 4%,
+        var(--color-white) 96%,
+        rgb(255 224 178) 96%,
+        rgb(255 224 178) 97.5%,
+        rgb(247 158 27) 97.5%,
+        rgb(247 158 27) 100%
+    );
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: var(--z-content);
+}
+
+.container {
+    display: grid;
+    margin: 10px;
+    padding: 10px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .title {
+        margin-bottom: 10px;
+        letter-spacing: 1.5px;
+        color: var(--color-dark-gray);
+    }
+
+    .saleDesc {
+        margin-bottom: 2px;
+    }
+}
+
+.swiperContainer {
+    display: grid;
+}
+
+.swiper {
+    padding-bottom: 15px;
+
+    .product {
+        margin: 0 auto;
+    }
+}
+
+.chevronLeft {
+    left: 10px;
+}
+
+.chevronRight {
+    right: 10px;
+}
+
+.chevronLeft,
+.chevronRight {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    background: var(--color-light-gray);
+    z-index: calc(var(--z-content) + 10);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        background: var(--color-light-gray);
+
+        svg {
+            path {
+                fill: var(--color-accent);
+            }
+        }
+    }
+
+    &.chevronVisible {
+        opacity: 1;
+    }
+}

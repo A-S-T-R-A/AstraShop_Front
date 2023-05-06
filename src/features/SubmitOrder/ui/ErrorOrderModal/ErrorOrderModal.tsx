@@ -39,7 +39,7 @@ export function ErrorOrderModal() {
             >
                 {t("emptyBasket")}
             </Typography>
-            <Button onClick={onClose} variant={ButtonVariant.FILLED_RED} className={styles.btn}>
+            <Button onClick={onClose} variant={ButtonVariant.FILLED} className={styles.btn}>
                 {t("returnBtn")}
             </Button>
         </ModalSlider>

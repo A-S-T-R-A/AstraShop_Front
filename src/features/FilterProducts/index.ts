@@ -5,6 +5,6 @@ export { fetchCategoryFilters } from "./model/services/fetchCategoryFilters/fetc
 export {
     getProductFiltersPriceRange,
     getProductFiltersAttributes,
-} from "./model/selectors/subcategoryPageSelectors"
+} from "./model/selectors/filterProductsSelectors"
 
 export { filterProductsActions } from "./model/slice/filterProductsSlice"

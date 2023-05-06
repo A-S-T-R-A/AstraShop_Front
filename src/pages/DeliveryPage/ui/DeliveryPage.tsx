@@ -1,8 +1,8 @@
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { NovaPochtaIcon, IntimeIcon, AutoluxIcon } from "shared/assets/icons/others"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { useTranslation } from "react-i18next"
-import { BannersRow } from "widgets/BannersRow"
+import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
+import { BannersRow } from "widgets/Banner"
 import styles from "./DeliveryPage.module.scss"
 
 export function DeliveryPage() {
@@ -35,7 +35,7 @@ export function DeliveryPage() {
                     {t("returnInfoObligations")}
                 </Typography>
             </div>
-            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )

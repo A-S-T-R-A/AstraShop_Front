@@ -44,6 +44,10 @@ export const fetchCategoryProducts = createAsyncThunk<
             throw new Error()
         }
 
+        if (response.status === 204) {
+            return rejectWithValue("No Products")
+        }
+
         return response.data
     } catch (error: any) {
         if (error.response?.status === 404) {

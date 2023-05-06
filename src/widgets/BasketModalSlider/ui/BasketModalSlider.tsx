@@ -12,10 +12,9 @@ import {
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useTranslation } from "react-i18next"
-import { basketItemsList } from "../model/list"
-import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
+import styles from "./Basket.module.scss"
 
 export function BasketModalSlider() {
     const height = window.innerHeight
@@ -50,7 +49,7 @@ export function BasketModalSlider() {
                     <CrossIcon onClick={onClose} className={styles.cross} />
                 </div>
 
-                {basketItemsList.length ? (
+                {basketProducts.length ? (
                     <>
                         <BasketItemsList list={basketProducts || []} />
                         <BasketSummary onOrderClick={() => navigate(RoutePath.order)} />
